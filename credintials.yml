@@ -1,0 +1,6 @@
+db:
+  host: "sql6.freesqldatabase.com"
+  user: "sql6585460"
+  passwd: "p85m4lb29t"
+  database: "sql6585460"
+  auth_plugin: "mysql_native_password"

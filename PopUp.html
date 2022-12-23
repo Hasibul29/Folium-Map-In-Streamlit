@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  </head>
+  <body>
+    <style>
+       body {
+        margin: 10px;
+        }
+
+        table,
+        td,
+        th {
+        border-color: #c4dcf3;
+        border-collapse: collapse;
+        padding: 5px;
+        }
+        th {
+        color: white;
+        text-align: left;
+        }
+
+        table tr:nth-child(odd) {
+        background-color: #a3caec;
+        }
+        progress {
+          border: none;
+          background: rgb(17, 103, 189);
+        }
+
+        progress {
+          color: lightblue;
+        }
+
+        progress::-moz-progress-bar {
+          background: lightblue;
+        }
+
+        progress::-webkit-progress-value {
+          background: rgb(26, 127, 18);
+        }
+
+        progress::-webkit-progress-bar {
+          background: rgb(188, 188, 188);
+        }
+    </style>
+    <table>
+        {% for item in data %}
+        {% set string = dataf.columns[loop.index-1] %}
+        {% set string2 = 'Completion_percentage' %}
+        {% if string==string2 %}
+        <tr>
+            <td>{{dataf.columns[loop.index-1]}}</td>
+            {% set val = item[:-1] %}
+            <td><progress value="{{val}}" max="100"></progress></td>
+        </tr>
+        {% else %}
+        <tr>
+            <td>{{dataf.columns[loop.index-1]}}</td>
+            <td>{{item}}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
