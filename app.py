@@ -6,8 +6,8 @@ import jinja2
 # from geopy.geocoders import Nominatim
 import sqlite3
 import datetime
-# import mysql
-# import mysql.connector as mysql
+import mysql
+import mysql.connector as mysql
 # from db_connection import get_database_connection
 
 
