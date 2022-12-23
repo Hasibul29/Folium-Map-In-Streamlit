@@ -8,3 +8,4 @@ streamlit==1.11.1
 plotly==4.14.3
 yagmail==0.14.256
 PyYAML==6.0
+libmysqlclient-dev
