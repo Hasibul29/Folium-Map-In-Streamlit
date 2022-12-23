@@ -3,7 +3,7 @@ import folium
 from streamlit_folium import folium_static
 import pandas as pd
 import jinja2
-# from geopy.geocoders import Nominatim
+from geopy.geocoders import Nominatim
 import sqlite3
 import datetime
 import mysql
@@ -19,21 +19,19 @@ cursor.execute("Select * from mytable")
  
 database = cursor.fetchall()
 
-def mapval(str,strtdate ,enddate):
+def mapval(str,strtdate,enddate):
     if str=='All':
-        print(strtdate,enddate)
-        q = pd.read_sql_query("Select * from mytable where DATE(project_start_time) > DATE('{strtdate}')",db)
-        df = pd.DataFrame(q,columns=['project_name','category','affiliated_agency','description','project_start_time','project_completion_time','total_budget','completion_percentage','location_coordinates','comment'])
-        print(df)
-    # elif str=='Education':
-    #     q = pd.read_sql_query("Select * from mytable where category='Education' and project_compleition_time between '{startdate}' and '{enddate}'",db)
-    # elif str=='Health':
-    #     q = pd.read_sql_query("Select * from mytable where category='Health'",db)
-    # elif str=='Governance':
-    #     q = pd.read_sql_query("Select * from mytable where category='Governance'",db)
-    # elif str=='Energy & Mining':
-    #     q = pd.read_sql_query("Select * from mytable where category='Energy & Mining'",db)
+        q = pd.read_sql_query(f"Select * from mytable where project_start_time > '{strtdate}' or project_completion_time < '{enddate}'",db)
+    elif str=='Education':
+        q = pd.read_sql_query("Select * from mytable where category='Education' and (project_start_time > '{strtdate}' or project_completion_time < '{enddate}') ",db)
+    elif str=='Health':
+        q = pd.read_sql_query("Select * from mytable where category='Health' and (project_start_time > '{strtdate}' or project_completion_time < '{enddate}') ",db)
+    elif str=='Governance':
+        q = pd.read_sql_query("Select * from mytable where category='Governance' and (project_start_time > '{strtdate}' or project_completion_time < '{enddate}') ",db)
+    elif str=='Energy & Mining':
+        q = pd.read_sql_query("Select * from mytable where category='Energy & Mining' and (project_start_time > '{strtdate}' or project_completion_time < '{enddate}') ",db)
     
+    df = pd.DataFrame(q,columns=['project_name','category','affiliated_agency','description','project_start_time','project_completion_time','total_budget','completion_percentage','location_coordinates','comment'])
 
     # with open(r'./projects.csv',"r")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            as f:
     #     df = df.append(pd.read_csv(f),ignore_index=True)
@@ -77,8 +75,8 @@ def main():
                         'Energy & Mining',
                         ))
     # col1,col2=st.columns((2,2))
-    strtdate = st.sidebar.date_input(label='Start Date',key='date1')
-    enddate = st.sidebar.date_input(label='End Date',key='date2')
+    strtdate = st.sidebar.date_input(label='Start Date')
+    enddate = st.sidebar.date_input(label='End Date')
     print(strtdate,enddate)
     if selected=='All':
         mapval('All',strtdate,enddate)
