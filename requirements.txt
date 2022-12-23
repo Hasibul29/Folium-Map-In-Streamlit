@@ -1,3 +1,4 @@
 streamlit==1.11.1
 streamlit-folium
+MySQL-python
 mysql-connector-python
