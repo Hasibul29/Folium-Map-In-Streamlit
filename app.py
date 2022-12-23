@@ -3,7 +3,7 @@ import folium
 from streamlit_folium import folium_static
 import pandas as pd
 import jinja2
-from geopy.geocoders import Nominatim
+# from geopy.geocoders import Nominatim
 import sqlite3
 import datetime
 import mysql
