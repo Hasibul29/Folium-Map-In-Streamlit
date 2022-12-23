@@ -10,7 +10,7 @@ import mysql
 import mysql.connector as mysql
 from db_connection import get_database_connection
 
-hide_extra=''' 
+hide_extra="""
 <style>
 #MainMenu{
   visibility: hidden;
@@ -23,7 +23,7 @@ Button{
 }
 
 </style>
-'''
+"""
 
 cursor,db = get_database_connection()
 
@@ -77,7 +77,7 @@ def mapval(str,strtdate,enddate):
 def main():
     st.title('CodeSamurai')
     st.subheader('Project Map')
-   st.markdown(hide_extra,unsafe_allow_html=True)
+    st.markdown(hide_extra, unsafe_allow_html=True)
     # st.subheader('International Islamic University Chittagong')
     # # st.error('Updated version Coming Soon!!!')
     # st.sidebar.write('Menu')
