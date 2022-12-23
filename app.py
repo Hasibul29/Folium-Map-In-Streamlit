@@ -8,11 +8,11 @@ import sqlite3
 import datetime
 import mysql
 import mysql.connector as mysql
-# from db_connection import get_database_connection
+from db_connection import get_database_connection
 
 
 
-# cursor,db = get_database_connection()
+cursor,db = get_database_connection()
 
 
 cursor.execute("Select * from mytable")
