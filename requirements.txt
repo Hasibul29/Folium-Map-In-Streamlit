@@ -1,3 +1,4 @@
+libmysqlclient-dev
 mysqlclient==2.0.3
 mysql-connector-python==8.0.23
 mysql-connector==2.2.9
@@ -8,4 +9,3 @@ streamlit==1.11.1
 plotly==4.14.3
 yagmail==0.14.256
 PyYAML==6.0
-libmysqlclient-dev
